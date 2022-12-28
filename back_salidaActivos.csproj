@@ -178,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PendientesController.cs" />
     <Compile Include="Controllers\ProcesoController.cs" />
+    <Compile Include="Controllers\SumaController.cs" />
     <Compile Include="Controllers\Solicitud7Controller.cs" />
     <Compile Include="Controllers\SolicitudesCerradasController.cs" />
     <Compile Include="Controllers\SolicitudesCerradasPorAreaController.cs" />
@@ -203,11 +204,13 @@
     </Compile>
     <Compile Include="Models\GestorDispositivos.cs" />
     <Compile Include="Models\GestorHistorial.cs" />
+    <Compile Include="Models\GestorTiempos.cs" />
     <Compile Include="Models\GestorUsuarios.cs" />
     <Compile Include="Models\GestorMecanicos.cs" />
     <Compile Include="Models\GestorMaquinas.cs" />
     <Compile Include="Models\Dispositivos.cs" />
     <Compile Include="Models\Historial.cs" />
+    <Compile Include="Models\Tiempos.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Mecanicos.cs" />
     <Compile Include="Models\Maquinas.cs" />
