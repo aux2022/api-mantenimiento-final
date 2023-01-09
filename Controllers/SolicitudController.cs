@@ -19,44 +19,44 @@ namespace back_salidaActivos.Controllers
             return gSolicitud.GetSolicituds();
 
         }
-       
-        // GET: api/Solicitud/5
+
+        //GET: api/Solicitud/5
         public IEnumerable<solicitud> Get(int id)
         {
 
             GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetSolicitudsById(id);
+            return gSolicitud.GetVacacionesById(id);
 
 
-        }
+            }
 
-        // POST: api/Solicitud
-        public bool Post([FromBody] solicitud Solicitud)
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.addSolicitud(Solicitud);
+            // POST: api/Solicitud
+            public bool Post([FromBody] solicitud Solicitud)
+            {
+                GestorSolicitud gSolicitud = new GestorSolicitud();
+                bool res = gSolicitud.addSolicitud(Solicitud);
 
-            return res;
-        }
+                return res;
+            }
 
 
 
-        // PUT: api/Solicitud/5
-        public bool Put(int id, [FromBody]solicitud Solicitud)
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.updateSolicitud(id,Solicitud);
+            //// PUT: api/Solicitud/5
+            //public bool Put(int id, [FromBody]solicitud Solicitud)
+            //{
+            //    GestorSolicitud gSolicitud = new GestorSolicitud();
+            //    bool res = gSolicitud.updateSolicitud(id,Solicitud);
 
-            return res;
-        }
+            //    return res;
+            //}
 
-        // DELETE: api/Solicitud/5
-        public bool Delete(int id)
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.deleteSolicitud(id);
+            //// DELETE: api/Solicitud/5
+            //public bool Delete(int id)
+            //{
+            //    GestorSolicitud gSolicitud = new GestorSolicitud();
+            //    bool res = gSolicitud.deleteSolicitud(id);
 
-            return res;
+            //    return res;
+            //}
         }
     }
-}
