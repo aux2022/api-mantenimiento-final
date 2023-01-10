@@ -120,7 +120,87 @@ namespace back_salidaActivos.Models
             }
             return lista;
         }
+        //
+        public List<empleado> GetEmpleadoById(int id2)
+        {
 
+            List<empleado> lista = new List<empleado>();
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("select e.noNomina, e.nombre, e.puesto, e.area, e.jefe, e.correoJefe from Empleado as e where e.noNomina=" + id2 + "\r\n\r\n order by e.noNomina desc", conn);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    //control
+                    int noNomina = dr.GetInt32(0);
+                    string nombre = dr.GetString(1).Trim();
+                    string puesto = dr.GetString(2).Trim();
+                    string area = dr.GetString(3).Trim();
+                    string jefe = dr.GetString(4).Trim();
+                    string correoJefe = dr.GetString(5).Trim();
+
+                    empleado Solicitud = new empleado(
+                   noNomina,
+                 nombre,
+                 puesto,
+                 area,
+                 jefe,
+                 correoJefe
+                        );
+
+                    lista.Add(Solicitud);
+                }
+                dr.Close();
+                conn.Close();
+            }
+            return lista;
+        }
+        //
+        public List<control> GetControlById(int id2)
+        {
+
+            List<control> lista = new List<control>();
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("select c.noNomina, CONVERT(VARCHAR, CAST(c.ingreso as date), 101) AS ingreso, c.antiguedad, c.diasDerecho, c.diasDisfrutados, c.diasPendientes from Control as c where c.noNomina=" + id2 + "\r\n\r\n order by c.noNomina desc", conn);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    //control
+                    int noNomina = dr.GetInt32(0);
+                    string ingreso = dr.GetString(1);
+                    int antiguedad = dr.GetInt32(2);
+                    int diasDerecho = dr.GetInt32(3);
+                    int diasDisfrutados = dr.GetInt32(4);
+                    int diasPendientes = dr.GetInt32(5);
+
+                    control Solicitud = new control(
+                   noNomina,
+                   ingreso,
+                   antiguedad,
+                   diasDerecho,
+                   diasDisfrutados,
+                   diasPendientes
+                        );
+
+                    lista.Add(Solicitud);
+                }
+                dr.Close();
+                conn.Close();
+            }
+            return lista;
+        }
+        //
 
         public List<control> GetControls()
         {
@@ -199,6 +279,8 @@ namespace back_salidaActivos.Models
             }
             return lista;
         }
+        
+
 
         public bool addSolicitud(solicitud Solicitud)
         {

@@ -21,11 +21,11 @@ namespace back_salidaActivos.Controllers
         }
 
         //GET: api/Solicitud/5
-        public IEnumerable<solicitud> Get(int id)
+        public IEnumerable<empleado> Get(int id)
         {
 
             GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetVacacionesById(id);
+            return gSolicitud.GetEmpleadoById(id);
 
 
             //}

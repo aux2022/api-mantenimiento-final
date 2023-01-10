@@ -20,15 +20,15 @@ namespace back_salidaActivos.Controllers
 
         }
 
-        //GET: api/Solicitud/5
-        //public IEnumerable<control> Get(int id)
-        //{
+       // GET: api/Solicitud/5
+        public IEnumerable<control> Get(int id)
+        {
 
-        //    GestorSolicitud gSolicitud = new GestorSolicitud();
-        //    return gSolicitud.GetVacacionesById(id);
+            GestorSolicitud gSolicitud = new GestorSolicitud();
+            return gSolicitud.GetControlById(id);
 
 
-        //}
+        }
 
         //// POST: api/Solicitud
         //public bool Post([FromBody] solicitud Solicitud)

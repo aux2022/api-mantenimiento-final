@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\randy\OneDrive\Escritorio\New folder</_PublishTargetUrl>
-    <History>True|2023-01-09T19:19:43.3907177Z;</History>
+    <History>True|2023-01-10T16:55:18.4965258Z;True|2023-01-09T13:19:43.3907177-06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -79,10 +79,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/09/2023 06:07:21</publishTime>
     </File>
     <File Include="bin/back_salidaActivos.dll">
-      <publishTime>01/09/2023 13:19:40</publishTime>
+      <publishTime>01/10/2023 10:53:33</publishTime>
     </File>
     <File Include="bin/back_salidaActivos.pdb">
-      <publishTime>01/09/2023 13:19:40</publishTime>
+      <publishTime>01/10/2023 10:53:33</publishTime>
     </File>
     <File Include="bin/EASendMail.dll">
       <publishTime>01/09/2023 06:07:21</publishTime>
@@ -409,7 +409,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/09/2023 06:07:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/09/2023 13:19:42</publishTime>
+      <publishTime>01/10/2023 10:55:18</publishTime>
     </File>
   </ItemGroup>
 </Project>
