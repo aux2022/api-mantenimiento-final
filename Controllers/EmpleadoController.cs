@@ -28,7 +28,7 @@ namespace back_salidaActivos.Controllers
             return gSolicitud.GetEmpleadoById(id);
 
 
-            //}
+            }
 
             //// POST: api/Solicitud
             //public bool Post([FromBody] solicitud Solicitud)
@@ -41,14 +41,15 @@ namespace back_salidaActivos.Controllers
 
 
 
-            //// PUT: api/Solicitud/5
-            //public bool Put(int id, [FromBody]solicitud Solicitud)
-            //{
-            //    GestorSolicitud gSolicitud = new GestorSolicitud();
-            //    bool res = gSolicitud.updateSolicitud(id,Solicitud);
+            // PUT: api/Solicitud/5
 
-            //    return res;
-            //}
+            public bool Put(int id, [FromBody] empleado Empleado)
+            {
+                GestorSolicitud gSolicitud = new GestorSolicitud();
+                bool res = gSolicitud.updateEmpleado(id, Empleado);
+
+                return res;
+            }
 
             //// DELETE: api/Solicitud/5
             //public bool Delete(int id)
@@ -60,4 +61,4 @@ namespace back_salidaActivos.Controllers
             //}
         }
     }
-}
+

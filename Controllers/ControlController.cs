@@ -41,14 +41,14 @@ namespace back_salidaActivos.Controllers
 
 
 
-        //// PUT: api/Solicitud/5
-        //public bool Put(int id, [FromBody]solicitud Solicitud)
-        //{
-        //    GestorSolicitud gSolicitud = new GestorSolicitud();
-        //    bool res = gSolicitud.updateSolicitud(id,Solicitud);
+        // PUT: api/Solicitud/5
+        public bool Put(int id, [FromBody] control Control)
+        {
+            GestorSolicitud gSolicitud = new GestorSolicitud();
+            bool res = gSolicitud.updateControl(id, Control);
 
-        //    return res;
-        //}
+            return res;
+        }
 
         //// DELETE: api/Solicitud/5
         //public bool Delete(int id)

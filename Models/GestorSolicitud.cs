@@ -279,8 +279,140 @@ namespace back_salidaActivos.Models
             }
             return lista;
         }
-        
 
+        //
+        public bool updateSolicitud(int id, solicitud Solicitud)
+        {
+            bool res = false;
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.CommandText = "solicitudUpdate";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.Parameters.AddWithValue("@noNomina", Solicitud.noNomina);
+                cmd.Parameters.AddWithValue("@fechaSolicitud", Solicitud.fechaSolicitud);
+                cmd.Parameters.AddWithValue("@fechaInicio", Solicitud.fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaRegreso", Solicitud.fechaRegreso);
+                cmd.Parameters.AddWithValue("@diasTotales", Solicitud.diasTotales);
+                cmd.Parameters.AddWithValue("@descripcion", Solicitud.descripcion);
+                cmd.Parameters.AddWithValue("@estatusJefe", Solicitud.estatusJefe);
+                cmd.Parameters.AddWithValue("@estatusRH", Solicitud.estatusRH);
+                cmd.Parameters.AddWithValue("@estatusFinal", Solicitud.estatusFinal);
+                cmd.Parameters.AddWithValue("@comentarioRH", Solicitud.comentarioRH);
+                cmd.Parameters.AddWithValue("@comentarioJefe", Solicitud.comentarioJefe);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    res = false;
+                    throw;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                }
+                return res;
+            }
+
+
+        }
+        //
+
+        public bool updateEmpleado(int id, empleado Empleado)
+        {
+            bool res = false;
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.CommandText = "empleadoUpdate";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@noNomina", id);
+
+                cmd.Parameters.AddWithValue("@nombre", Empleado.nombre);
+                cmd.Parameters.AddWithValue("@puesto", Empleado.puesto);
+                cmd.Parameters.AddWithValue("@area", Empleado.area);
+                cmd.Parameters.AddWithValue("@jefe", Empleado.jefe);
+                cmd.Parameters.AddWithValue("@correoJefe", Empleado.correoJefe);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    res = false;
+                    throw;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                }
+                return res;
+            }
+
+
+        }
+        //
+        public bool updateControl(int id, control Control)
+        {
+            bool res = false;
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.CommandText = "controlUpdate";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@noNomina", id);
+                cmd.Parameters.AddWithValue("@ingreso", Control.ingreso);
+                cmd.Parameters.AddWithValue("@antiguedad", Control.antiguedad);
+                cmd.Parameters.AddWithValue("@diasDerecho", Control.diasDerecho);
+                cmd.Parameters.AddWithValue("@diasDisfrutados", Control.diasDisfrutados);
+                cmd.Parameters.AddWithValue("@diasPendientes", Control.diasPendientes);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    res = false;
+                    throw;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                }
+                return res;
+            }
+
+
+        }
+        //
 
         public bool addSolicitud(solicitud Solicitud)
         {
@@ -330,83 +462,5 @@ namespace back_salidaActivos.Models
 
         }
 
-
-        //public bool updateSolicitud(int id, solicitud Solicitud)
-        //{
-        //    bool res = false;
-        //    string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-        //    using (SqlConnection conn = new SqlConnection(strConn))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-        //        //
-
-        //        //
-        //        try
-        //        {
-        //            conn.Open();
-        //            cmd.ExecuteNonQuery();
-        //            res = true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //            res = false;
-        //            throw;
-        //        }
-        //        finally
-        //        {
-        //            cmd.Parameters.Clear();
-        //            conn.Close();
-        //        }
-        //        return res;
-        //    }
-
-
-        //}
-
-        //public bool deleteSolicitud(int id)
-        //{
-        //    bool res = false;
-        //    string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-        //    using (SqlConnection conn = new SqlConnection(strConn))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-        //        cmd.CommandText = "solicitudMantenimientoDelete";
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@id_solicitud", id);
-
-        //        //
-
-        //        //
-        //        try
-        //        {
-        //            conn.Open();
-        //            cmd.ExecuteNonQuery();
-        //            res = true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //            res = false;
-        //            throw;
-        //        }
-        //        finally
-        //        {
-        //            cmd.Parameters.Clear();
-        //            conn.Close();
-        //        }
-        //        return res;
-        //    }
-
-
-        //}
-
-        //internal IEnumerable<solicitud> GetSolicitudsById(string id2)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }
