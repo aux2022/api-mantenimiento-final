@@ -30,20 +30,20 @@ namespace back_salidaActivos.Controllers
 
             }
 
-            //// POST: api/Solicitud
-            //public bool Post([FromBody] solicitud Solicitud)
-            //{
-            //    GestorSolicitud gSolicitud = new GestorSolicitud();
-            //    bool res = gSolicitud.addSolicitud(Solicitud);
+        // POST: api/Solicitud
+        public bool Post([FromBody] empleado Empleado)
+        {
+            GestorSolicitud gSolicitud = new GestorSolicitud();
+            bool res = gSolicitud.addEmpleado(Empleado);
 
-            //    return res;
-            //}
+            return res;
+        }
 
 
 
-            // PUT: api/Solicitud/5
+        // PUT: api/Solicitud/5
 
-            public bool Put(int id, [FromBody] empleado Empleado)
+        public bool Put(int id, [FromBody] empleado Empleado)
             {
                 GestorSolicitud gSolicitud = new GestorSolicitud();
                 bool res = gSolicitud.updateEmpleado(id, Empleado);

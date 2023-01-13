@@ -12,7 +12,10 @@ namespace back_salidaActivos.Models
      
         public int noNomina { get; set; }
 
+        public string contrasena { get; set; }
+
         public string nombre { get; set; }
+
 
         public string puesto { get; set; }
 
@@ -27,21 +30,21 @@ namespace back_salidaActivos.Models
         public empleado() { }
 
 
-        public empleado(int NoNomina, string Nombre, string Puesto, string Area, string Jefe, string CorreoJefe)
+        public empleado(int NoNomina, string Contrasena, string Nombre, string Puesto, string Area, string Jefe, string CorreoJefe)
         {
 
             noNomina = NoNomina;
+            contrasena = Contrasena;
             nombre = Nombre;
             puesto = Puesto;
             area= Area;
             jefe = Jefe;
             correoJefe = CorreoJefe;
 
-
-
         }
-        public empleado( string Nombre, string Puesto, string Area, string Jefe, string CorreoJefe)
+        public empleado( string Contrasena, string Nombre, string Puesto, string Area, string Jefe, string CorreoJefe)
         {
+            contrasena = Contrasena;
             nombre = Nombre;
             puesto = Puesto;
             area = Area;

@@ -30,14 +30,14 @@ namespace back_salidaActivos.Controllers
 
         }
 
-        //// POST: api/Solicitud
-        //public bool Post([FromBody] solicitud Solicitud)
-        //{
-        //    GestorSolicitud gSolicitud = new GestorSolicitud();
-        //    bool res = gSolicitud.addSolicitud(Solicitud);
+        // POST: api/Solicitud
+        public bool Post([FromBody] control Control)
+        {
+            GestorSolicitud gSolicitud = new GestorSolicitud();
+            bool res = gSolicitud.addControl(Control);
 
-        //    return res;
-        //}
+            return res;
+        }
 
 
 

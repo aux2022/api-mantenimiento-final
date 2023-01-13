@@ -130,7 +130,7 @@ namespace back_salidaActivos.Models
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("select e.noNomina, e.nombre, e.puesto, e.area, e.jefe, e.correoJefe from Empleado as e where e.noNomina=" + id2 + "\r\n\r\n order by e.noNomina desc", conn);
+                SqlCommand cmd = new SqlCommand("select  e.noNomina, e.contrasena, e.nombre, e.puesto, e.area, e.jefe, e.correoJefe from Empleado as e where e.noNomina=" + id2 + "\r\n\r\n order by e.noNomina desc", conn);
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -138,14 +138,16 @@ namespace back_salidaActivos.Models
                 {
                     //control
                     int noNomina = dr.GetInt32(0);
-                    string nombre = dr.GetString(1).Trim();
-                    string puesto = dr.GetString(2).Trim();
-                    string area = dr.GetString(3).Trim();
-                    string jefe = dr.GetString(4).Trim();
-                    string correoJefe = dr.GetString(5).Trim();
+                    string contrasena = dr.GetString(1).Trim();
+                    string nombre = dr.GetString(2).Trim();
+                    string puesto = dr.GetString(3).Trim();
+                    string area = dr.GetString(4).Trim();
+                    string jefe = dr.GetString(5).Trim();
+                    string correoJefe = dr.GetString(6).Trim();
 
                     empleado Solicitud = new empleado(
                    noNomina,
+                   contrasena,
                  nombre,
                  puesto,
                  area,
@@ -257,14 +259,16 @@ namespace back_salidaActivos.Models
                 {
                     //control
                     int noNomina = dr.GetInt32(0);
-                    string nombre = dr.GetString(1).Trim();
-                    string puesto = dr.GetString(2).Trim();
-                    string area = dr.GetString(3).Trim();
-                    string jefe = dr.GetString(4).Trim();
-                    string correoJefe = dr.GetString(5).Trim();
+                    string contrasena = dr.GetString(1).Trim();
+                    string nombre = dr.GetString(2).Trim();
+                    string puesto = dr.GetString(3).Trim();
+                    string area = dr.GetString(4).Trim();
+                    string jefe = dr.GetString(5).Trim();
+                    string correoJefe = dr.GetString(6).Trim();
 
                     empleado Solicitud = new empleado(
                    noNomina,
+                   contrasena,
                  nombre,
                  puesto,
                  area,
@@ -342,7 +346,7 @@ namespace back_salidaActivos.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@noNomina", id);
-
+                cmd.Parameters.AddWithValue("@contrasena", Empleado.contrasena);
                 cmd.Parameters.AddWithValue("@nombre", Empleado.nombre);
                 cmd.Parameters.AddWithValue("@puesto", Empleado.puesto);
                 cmd.Parameters.AddWithValue("@area", Empleado.area);
@@ -462,5 +466,92 @@ namespace back_salidaActivos.Models
 
         }
 
+        public bool addEmpleado(empleado Empleado)
+        {
+            bool res = false;
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.CommandText = "add_Empleado";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@noNomina", Empleado.noNomina);
+                cmd.Parameters.AddWithValue("@contrasena", Empleado.contrasena);
+                cmd.Parameters.AddWithValue("@nombre", Empleado.nombre);
+                cmd.Parameters.AddWithValue("@puesto", Empleado.puesto);
+                cmd.Parameters.AddWithValue("@area", Empleado.area);
+                cmd.Parameters.AddWithValue("@jefe",Empleado.jefe);
+                cmd.Parameters.AddWithValue("@correoJefe", Empleado.correoJefe);
+             
+
+                //
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    res = true;
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    res = false;
+                    throw;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                }
+                return res;
+            }
+
+
+        }
+
+        public bool addControl(control Control)
+        {
+            bool res = false;
+            string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.CommandText = "add_Control";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@noNomina", Control.noNomina);
+                cmd.Parameters.AddWithValue("@ingreso", Control.ingreso);
+                cmd.Parameters.AddWithValue("@antiguedad", Control.antiguedad);
+                cmd.Parameters.AddWithValue("@diasDerecho", Control.diasDerecho);
+                cmd.Parameters.AddWithValue("@diasDisfrutados", Control.diasDisfrutados);
+                cmd.Parameters.AddWithValue("@diasPendientes", Control.diasPendientes);
+
+                //
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    res = true;
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    res = false;
+                    throw;
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conn.Close();
+                }
+                return res;
+            }
+
+
+        }
     }
 }
