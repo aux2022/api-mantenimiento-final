@@ -22,12 +22,14 @@ namespace back_salidaActivos.Models
 
         public int diasPendientes { get; set; }
 
+        public string ingresoExterno {  get; set; }
+
 
 
         public control() { }
 
 
-        public control(int NoNomina, string Ingreso, int Antiguedad, int DiasDerecho, int DiasDisfrutados, int DiasPendientes)
+        public control(int NoNomina, string Ingreso, int Antiguedad, int DiasDerecho, int DiasDisfrutados, int DiasPendientes, string IngresoExterno)
         {
 
             noNomina = NoNomina;
@@ -36,12 +38,10 @@ namespace back_salidaActivos.Models
             diasDerecho = DiasDerecho;
             diasDisfrutados = DiasDisfrutados;
             diasPendientes = DiasPendientes;
-
-
-
+            ingresoExterno = IngresoExterno;
         }
         public control(
-            string Ingreso, int Antiguedad, int DiasDerecho, int DiasDisfrutados, int DiasPendientes
+            string Ingreso, int Antiguedad, int DiasDerecho, int DiasDisfrutados, int DiasPendientes, string IngresoExterno
             )
         {
            
@@ -50,6 +50,7 @@ namespace back_salidaActivos.Models
             diasDerecho = DiasDerecho;
             diasDisfrutados = DiasDisfrutados;
             diasPendientes = DiasPendientes;
+            ingresoExterno = IngresoExterno;
 
         }
 

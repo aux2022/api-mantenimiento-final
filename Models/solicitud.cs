@@ -14,6 +14,11 @@ namespace back_salidaActivos.Models
 
         public string nombre { get; set; }
 
+        public string puesto { get; set; }
+        public string area { get; set; }
+        public string jefe { get; set; }
+
+
         public string fechaSolicitud { get; set; }
 
         public string fechaInicio { get; set; }
@@ -34,19 +39,24 @@ namespace back_salidaActivos.Models
 
         public string comentarioJefe { get; set; }
 
+        public string tipo { get; set; }
+
 
         public solicitud() { }
 
 
         public solicitud(
-          int NoNomina, string Nombre, string FechaSolicitud, string FechaInicio, string FechaRegreso,
+          int NoNomina, string Nombre, string Puesto, string Area, string Jefe, string FechaSolicitud, string FechaInicio, string FechaRegreso,
          int DiasTotales, string Descripcion, string EstatusJefe, string EstatusRH, string EstatusFinal, string ComentarioRH,
-         string ComentarioJefe
+         string ComentarioJefe, string Tipo
           )
         {
 
             noNomina = NoNomina;
             nombre = Nombre;
+            puesto = Puesto;
+            area = Area; 
+            jefe= Jefe;
             fechaSolicitud = FechaSolicitud;
             fechaInicio = FechaInicio;
             fechaRegreso = FechaRegreso;
@@ -57,18 +67,22 @@ namespace back_salidaActivos.Models
             estatusFinal = EstatusFinal;
             comentarioRH = ComentarioRH;
             comentarioJefe = ComentarioJefe;
+            tipo = Tipo;
 
         }
         public solicitud(
-           int NoSolicitud, int NoNomina, string Nombre, string FechaSolicitud, string FechaInicio, string FechaRegreso,
+           int NoSolicitud, int NoNomina, string Nombre, string Puesto, string Area, string Jefe, string FechaSolicitud, string FechaInicio, string FechaRegreso,
            int DiasTotales, string Descripcion,  string EstatusJefe, string EstatusRH, string EstatusFinal,string ComentarioRH,
-           string ComentarioJefe
+           string ComentarioJefe, string Tipo
             )
         {
             noSolicitud = NoSolicitud;
             noNomina= NoNomina;
             nombre= Nombre;
-            fechaSolicitud= FechaSolicitud;
+            puesto = Puesto;
+            area = Area;
+            jefe = Jefe;
+            fechaSolicitud = FechaSolicitud;
             fechaInicio= FechaInicio; 
             fechaRegreso= FechaRegreso;
             diasTotales= DiasTotales;
@@ -78,6 +92,7 @@ namespace back_salidaActivos.Models
             estatusFinal= EstatusFinal;
             comentarioRH = ComentarioRH;
             comentarioJefe= ComentarioJefe;
+            tipo=Tipo;
 
         }
 

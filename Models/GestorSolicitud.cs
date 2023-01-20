@@ -30,21 +30,28 @@ namespace back_salidaActivos.Models
                     int noSolicitud = dr.GetInt32(0);
                     int noNomina = dr.GetInt32(1);
                     string nombre = dr.GetString(2);
-                    string fechaSolicitud = dr.GetString(3).Trim();
-                    string fechaInicio = dr.GetString(4).Trim();
-                    string fechaRegreso = dr.GetString(5).Trim();
-                    int diasTotales = dr.GetInt32(6);
-                    string descripcion = dr.GetString(7).Trim();
-                    string estatusJefe = dr.GetString(8).Trim();
-                    string estatusRH = dr.GetString(9).Trim();
-                    string estatusFinal = dr.GetString(10).Trim();
-                    string comentariosRH = dr.GetString(11).Trim();
-                    string comentariosJefe = dr.GetString(12).Trim();
+                    string puesto = dr.GetString(3);
+                    string area = dr.GetString(4);
+                    string jefe = dr.GetString(5);
+                    string fechaSolicitud = dr.GetString(6).Trim();
+                    string fechaInicio = dr.GetString(7).Trim();
+                    string fechaRegreso = dr.GetString(8).Trim();
+                    int diasTotales = dr.GetInt32(9);
+                    string descripcion = dr.GetString(10).Trim();
+                    string estatusJefe = dr.GetString(11).Trim();
+                    string estatusRH = dr.GetString(12).Trim();
+                    string estatusFinal = dr.GetString(13).Trim();
+                    string comentariosRH = dr.GetString(14).Trim();
+                    string comentariosJefe = dr.GetString(15).Trim();
+                    string tipo = dr.GetString(16).Trim();
 
                     solicitud Solicitud = new solicitud(
                    noSolicitud,
                    noNomina,
                    nombre,
+                   puesto,
+                   area,
+                   jefe,
                    fechaSolicitud,
                    fechaInicio,
                    fechaRegreso,
@@ -54,7 +61,8 @@ namespace back_salidaActivos.Models
                    estatusRH,
                    estatusFinal,
                    comentariosRH,
-                   comentariosJefe  
+                   comentariosJefe,
+                   tipo
                         );
 
                     lista.Add(Solicitud);
@@ -75,7 +83,7 @@ namespace back_salidaActivos.Models
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("select s.noSolicitud, s.noNomina, e.nombre, CONVERT(VARCHAR, CAST(s.fechaSolicitud as date), 101) AS fechaSolicitud, CONVERT(VARCHAR, CAST(s.fechaInicio as date), 101) AS fechaInicio, CONVERT(VARCHAR, CAST(s.fechaRegreso as date), 101) AS fechaRegreso, s.diasTotales, s.descripcion, s.estatusJefe, s.estatusRH, s.estatusFinal, s.comentariosRH, s.comentariosJefe from Solicitud as s inner join Empleado as e on s.noNomina =e.noNomina where noSolicitud="+id2+"\r\n\r\norder by s.noSolicitud", conn);
+                SqlCommand cmd = new SqlCommand("select s.noSolicitud, s.noNomina, e.nombre, e.puesto, e.area, e.jefe, CONVERT(VARCHAR, CAST(s.fechaSolicitud as date), 101) AS fechaSolicitud, CONVERT(VARCHAR, CAST(s.fechaInicio as date), 101) AS fechaInicio, CONVERT(VARCHAR, CAST(s.fechaRegreso as date), 101) AS fechaRegreso, s.diasTotales, s.descripcion, s.estatusJefe, s.estatusRH, s.estatusFinal, s.comentariosRH, s.comentariosJefe, s.tipo from Solicitud as s inner join Empleado as e on s.noNomina =e.noNomina where noSolicitud="+id2+"\r\n\r\norder by s.noSolicitud", conn);
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -85,21 +93,28 @@ namespace back_salidaActivos.Models
                     int noSolicitud = dr.GetInt32(0);
                     int noNomina = dr.GetInt32(1);
                     string nombre = dr.GetString(2);
-                    string fechaSolicitud = dr.GetString(3).Trim();
-                    string fechaInicio = dr.GetString(4).Trim();
-                    string fechaRegreso = dr.GetString(5).Trim();
-                    int diasTotales = dr.GetInt32(6);
-                    string descripcion = dr.GetString(7).Trim();
-                    string estatusJefe = dr.GetString(8).Trim();
-                    string estatusRH = dr.GetString(9).Trim();
-                    string estatusFinal = dr.GetString(10).Trim();
-                    string comentariosRH = dr.GetString(11).Trim();
-                    string comentariosJefe = dr.GetString(12).Trim();
+                    string puesto = dr.GetString(3);
+                    string area = dr.GetString(4);
+                    string jefe = dr.GetString(5);
+                    string fechaSolicitud = dr.GetString(6).Trim();
+                    string fechaInicio = dr.GetString(7).Trim();
+                    string fechaRegreso = dr.GetString(8).Trim();
+                    int diasTotales = dr.GetInt32(9);
+                    string descripcion = dr.GetString(10).Trim();
+                    string estatusJefe = dr.GetString(11).Trim();
+                    string estatusRH = dr.GetString(12).Trim();
+                    string estatusFinal = dr.GetString(13).Trim();
+                    string comentariosRH = dr.GetString(14).Trim();
+                    string comentariosJefe = dr.GetString(15).Trim(); 
+                    string tipo = dr.GetString(16).Trim();
 
                     solicitud Solicitud = new solicitud(
                    noSolicitud,
                    noNomina,
                    nombre,
+                   puesto,
+                   area,
+                   jefe,
                    fechaSolicitud,
                    fechaInicio,
                    fechaRegreso,
@@ -109,7 +124,8 @@ namespace back_salidaActivos.Models
                    estatusRH,
                    estatusFinal,
                    comentariosRH,
-                   comentariosJefe
+                   comentariosJefe,
+                   tipo
                         );
 
 
@@ -172,7 +188,7 @@ namespace back_salidaActivos.Models
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("select c.noNomina, CONVERT(VARCHAR, CAST(c.ingreso as date), 101) AS ingreso, c.antiguedad, c.diasDerecho, c.diasDisfrutados, c.diasPendientes from Control as c where c.noNomina=" + id2 + "\r\n\r\n order by c.noNomina desc", conn);
+                SqlCommand cmd = new SqlCommand("select c.noNomina, c.ingreso, c.antiguedad, c.diasDerecho, c.diasDisfrutados, c.diasPendientes, c.ingresoExterno from Control as c where c.noNomina=" + id2 + "\r\n\r\n order by c.noNomina desc", conn);
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -180,11 +196,12 @@ namespace back_salidaActivos.Models
                 {
                     //control
                     int noNomina = dr.GetInt32(0);
-                    string ingreso = dr.GetString(1);
+                    string ingreso = dr.GetString(1).Trim();
                     int antiguedad = dr.GetInt32(2);
                     int diasDerecho = dr.GetInt32(3);
                     int diasDisfrutados = dr.GetInt32(4);
                     int diasPendientes = dr.GetInt32(5);
+                    string ingresoExterno = dr.GetString(6).Trim();
 
                     control Solicitud = new control(
                    noNomina,
@@ -192,7 +209,8 @@ namespace back_salidaActivos.Models
                    antiguedad,
                    diasDerecho,
                    diasDisfrutados,
-                   diasPendientes
+                   diasPendientes, 
+                   ingresoExterno
                         );
 
                     lista.Add(Solicitud);
@@ -220,11 +238,12 @@ namespace back_salidaActivos.Models
                 {
                     //control
                     int noNomina = dr.GetInt32(0);
-                    string ingreso = dr.GetString(1);
+                    string ingreso = dr.GetString(1).Trim();
                     int antiguedad = dr.GetInt32(2);
                     int diasDerecho = dr.GetInt32(3);
                     int diasDisfrutados = dr.GetInt32(4);
                     int diasPendientes = dr.GetInt32(5);
+                    string ingresoExterno = dr.GetString(6).Trim();
 
                     control Solicitud = new control(
                    noNomina,
@@ -232,7 +251,8 @@ namespace back_salidaActivos.Models
                    antiguedad, 
                    diasDerecho,
                    diasDisfrutados,
-                   diasPendientes
+                   diasPendientes,
+                   ingresoExterno
                         );
 
                     lista.Add(Solicitud);
@@ -309,6 +329,7 @@ namespace back_salidaActivos.Models
                 cmd.Parameters.AddWithValue("@estatusFinal", Solicitud.estatusFinal);
                 cmd.Parameters.AddWithValue("@comentarioRH", Solicitud.comentarioRH);
                 cmd.Parameters.AddWithValue("@comentarioJefe", Solicitud.comentarioJefe);
+                cmd.Parameters.AddWithValue("@tipo", Solicitud.tipo);
 
                 try
                 {
@@ -393,6 +414,7 @@ namespace back_salidaActivos.Models
                 cmd.Parameters.AddWithValue("@diasDerecho", Control.diasDerecho);
                 cmd.Parameters.AddWithValue("@diasDisfrutados", Control.diasDisfrutados);
                 cmd.Parameters.AddWithValue("@diasPendientes", Control.diasPendientes);
+                cmd.Parameters.AddWithValue("@ingresoExterno", Control.ingresoExterno);
 
                 try
                 {
@@ -439,6 +461,7 @@ namespace back_salidaActivos.Models
                 cmd.Parameters.AddWithValue("@estatusFinal", Solicitud.estatusFinal);
                 cmd.Parameters.AddWithValue("@comentarioRH", Solicitud.comentarioRH);
                 cmd.Parameters.AddWithValue("@comentarioJefe", Solicitud.comentarioJefe);
+                cmd.Parameters.AddWithValue("@tipo", Solicitud.tipo);
 
                 //
 
