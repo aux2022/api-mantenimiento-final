@@ -13,7 +13,7 @@ namespace back_salidaActivos.Controllers
     public class SolicitudController : ApiController
     {
         // GET: api/Solicitud
-        public IEnumerable<solicitud> Get()
+        public IEnumerable<lote> Get()
         {
             GestorSolicitud gSolicitud = new GestorSolicitud();
             return gSolicitud.GetSolicituds();
@@ -21,20 +21,20 @@ namespace back_salidaActivos.Controllers
         }
 
         //GET: api/Solicitud/5
-        public IEnumerable<solicitud> Get(int id)
-        {
+        //public IEnumerable<lote> Get(int id)
+        //{
 
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetVacacionesById(id);
+        //    GestorSolicitud gSolicitud = new GestorSolicitud();
+        //    return gSolicitud.GetVacaciones(id);
 
 
-            }
+        //    }
 
             // POST: api/Solicitud
-            public bool Post([FromBody] solicitud Solicitud)
+            public bool Post([FromBody] lote Lote)
             {
                 GestorSolicitud gSolicitud = new GestorSolicitud();
-                bool res = gSolicitud.addSolicitud(Solicitud);
+                bool res = gSolicitud.addSolicitud(Lote);
 
                 return res;
             }
@@ -42,10 +42,10 @@ namespace back_salidaActivos.Controllers
 
 
         // PUT: api/Solicitud/5
-        public bool Put(int id, [FromBody] solicitud Solicitud)
+        public bool Put(int id, [FromBody] lote Lote)
         {
             GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.updateSolicitud(id, Solicitud);
+            bool res = gSolicitud.updateSolicitud(id, Lote);
 
             return res;
         }

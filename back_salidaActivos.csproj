@@ -180,7 +180,7 @@
     </Compile>
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Control.cs" />
-    <Compile Include="Models\Solicitud.cs" />
+    <Compile Include="Models\Lote.cs" />
     <Compile Include="Models\GestorSolicitud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

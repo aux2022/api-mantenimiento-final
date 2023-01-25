@@ -13,42 +13,42 @@ namespace back_salidaActivos.Controllers
     public class ControlController : ApiController
     {
         // GET: api/Solicitud
-        public IEnumerable<control> Get()
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetControls();
+        //public IEnumerable<control> Get()
+        //{
+        //    GestorSolicitud gSolicitud = new GestorSolicitud();
+        //    return gSolicitud.GetControls();
 
-        }
+        //}
 
        // GET: api/Solicitud/5
-        public IEnumerable<control> Get(int id)
-        {
+        //public IEnumerable<control> Get(int id)
+        //{
 
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetControlById(id);
+        //    GestorSolicitud gSolicitud = new GestorSolicitud();
+        //    return gSolicitud.GetControlById(id);
 
 
-        }
+        //}
 
         // POST: api/Solicitud
-        public bool Post([FromBody] control Control)
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.addControl(Control);
+        //public bool Post([FromBody] control Control)
+        //{
+        //    GestorSolicitud gSolicitud = new GestorSolicitud();
+        //    bool res = gSolicitud.addControl(Control);
 
-            return res;
-        }
+        //    return res;
+        //}
 
 
 
         // PUT: api/Solicitud/5
-        public bool Put(int id, [FromBody] control Control)
-        {
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            bool res = gSolicitud.updateControl(id, Control);
+        //public bool Put(int id, [FromBody] control Control)
+        //{
+        //    GestorSolicitud gSolicitud = new GestorSolicitud();
+        //    bool res = gSolicitud.updateControl(id, Control);
 
-            return res;
-        }
+        //    return res;
+        //}
 
         //// DELETE: api/Solicitud/5
         //public bool Delete(int id)
