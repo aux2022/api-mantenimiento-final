@@ -10,28 +10,20 @@ using System.Web.Http.Cors;
 namespace back_salidaActivos.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "GET,POST,PUT,DELETE,OPTIONS")]
-    public class SolicitudController : ApiController
+    public class LotesController : ApiController
     {
         // GET: api/Solicitud
-        public IEnumerable<solicitud> Get()
+        public IEnumerable<lotes> Get()
         {
             GestorSolicitud gSolicitud = new GestorSolicitud();
             return gSolicitud.GetSolicituds();
 
         }
 
-        //GET: api/Solicitud/5
-        public IEnumerable<solicitud> Get(int id)
-        {
 
-            GestorSolicitud gSolicitud = new GestorSolicitud();
-            return gSolicitud.GetVacacionesById(id);
-
-
-            }
 
             // POST: api/Solicitud
-            public bool Post([FromBody] solicitud Solicitud)
+            public bool Post([FromBody] lotes Solicitud)
             {
                 GestorSolicitud gSolicitud = new GestorSolicitud();
                 bool res = gSolicitud.addSolicitud(Solicitud);
@@ -42,7 +34,7 @@ namespace back_salidaActivos.Controllers
 
 
         // PUT: api/Solicitud/5
-        public bool Put(int id, [FromBody] solicitud Solicitud)
+        public bool Put(string id, [FromBody] lotes Solicitud)
         {
             GestorSolicitud gSolicitud = new GestorSolicitud();
             bool res = gSolicitud.updateSolicitud(id, Solicitud);
