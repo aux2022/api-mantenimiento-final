@@ -5,38 +5,42 @@ using System.Web;
 
 namespace back_salidaActivos.Models
 {
-    public class lotes
+    public class lote
     {
 
-       public string lote { get; set; }
+        public int id { get; set; }
+       public string lote2 { get; set; }
 
         public int orden { get; set; }
         public string producto { get; set; }
         public string codigo { get; set; }
       
-        public decimal kg { get; set; }
-        public decimal mts { get; set; }
+        public double kg { get; set; }
+        public double mts { get; set; }
 
         public string almacen { get; set; }
         public string status { get; set; }
 
 
-        public lotes(string Lote, int Orden, string Producto, string Codigo, 
-            decimal Kg, decimal Mts, string Almacen, string Status ) { 
-            lote=Lote;
+        public lote(int Id, string Lote2, int Orden, string Producto, string Codigo,
+            double Kg, double Mts, string Almacen, string Status)
+        {
+            id = Id;
+            lote2 = Lote2;
             orden = Orden;
             producto = Producto;
             codigo = Codigo;
             kg = Kg;
-            mts= Mts;
+            mts = Mts;
             almacen = Almacen;
             status = Status;
         }
 
-        public lotes( int Orden, string Producto, string Codigo,
-      decimal Kg, decimal Mts, string Almacen, string Status)
+        public lote( string Lote2, int Orden, string Producto, string Codigo,
+            double Kg, double Mts, string Almacen, string Status)
         {
-            
+           
+            lote2 = Lote2;
             orden = Orden;
             producto = Producto;
             codigo = Codigo;
@@ -48,14 +52,11 @@ namespace back_salidaActivos.Models
 
 
 
-
-
-
     }
 
 
 
-    }
+}
 
 
 
